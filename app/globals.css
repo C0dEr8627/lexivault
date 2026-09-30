@@ -1506,7 +1506,7 @@ a {
 
 /* Keep the panel header visible while long document lists scroll independently. */
 .documents-table-body {
-  max-height: min(55vh, 440px);
+  max-height: min(70vh, 640px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
