@@ -65,11 +65,14 @@ function getPipelineState(status: DocumentRecord["status"], processingStage: Doc
 
 function formatUploadDate(value: string) {
   const date = new Date(value);
-  return date.toLocaleDateString([], {
-    month: "short",
+
+  // Keep the initial server render and browser hydration locale/timezone identical.
+  return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
+    month: "short",
     year: "numeric",
-  });
+    timeZone: "UTC",
+  }).format(date);
 }
 
 function formatFileSize(bytes: number | null) {
