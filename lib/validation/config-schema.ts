@@ -3,7 +3,7 @@ import { z } from "zod";
 export const GEMINI_MODEL = "gemini-3.8-flash";
 export const EMBEDDING_MODEL = "gemini-embedding-001";
 
-// Stable Gemini text-generation models suitable for new projects.
+// Current Gemini text-generation models supported by the Gemini API.
 export const GEMINI_MODEL_OPTIONS = [
   GEMINI_MODEL,
   "gemini-3.7-flash",
@@ -13,8 +13,7 @@ export const GEMINI_MODEL_OPTIONS = [
   "gemini-3.1-flash-lite",
 ] as const;
 
-// Keep existing saved 2.5 configurations valid, although Google limits access
-// to these models for new projects.
+// Retain support for existing accounts that have access to older 2.5 models.
 export const LEGACY_GEMINI_MODEL_OPTIONS = ["gemini-2.5-flash", "gemini-2.5-pro"] as const;
 export const GEMINI_MODEL_VALUES = [...GEMINI_MODEL_OPTIONS, ...LEGACY_GEMINI_MODEL_OPTIONS] as const;
 
