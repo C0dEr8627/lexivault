@@ -109,7 +109,7 @@ export async function generateText(
   } = {},
 ): Promise<string> {
   const key = getGeminiKey(options.apiKey);
-  const model = options.model || "gemini-2.5-flash";
+  const model = options.model || "gemini-3.8-flash";
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`,
