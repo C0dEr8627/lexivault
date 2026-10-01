@@ -9,6 +9,7 @@ import {
   EMBEDDING_MODEL,
   GEMINI_MODEL,
   GEMINI_MODEL_OPTIONS,
+  LEGACY_GEMINI_MODEL_OPTIONS,
   type ConfigInput,
 } from "@/lib/validation/config-schema";
 import type { ConfigRecord } from "@/types/config";
@@ -20,10 +21,15 @@ If the answer is not supported by the documents, say:
 "I could not find this information in your uploaded documents."
 When helpful, quote or summarize the relevant passage and avoid guessing.`;
 
-const geminiModelLabels: Record<(typeof GEMINI_MODEL_OPTIONS)[number], string> = {
-  "gemini-2.5-flash": "Gemini 2.5 Flash",
-  "gemini-2.5-pro": "Gemini 2.5 Pro",
-  "gemini-2.0-flash": "Gemini 2.0 Flash",
+const geminiModelLabels: Record<ConfigRecord["geminiModel"], string> = {
+  "gemini-3.8-flash": "Gemini 3.8 Flash · Recommended",
+  "gemini-3.7-flash": "Gemini 3.7 Flash",
+  "gemini-3.6-flash": "Gemini 3.6 Flash",
+  "gemini-3.5-flash": "Gemini 3.5 Flash",
+  "gemini-3.5-flash-lite": "Gemini 3.5 Flash-Lite · Lower cost",
+  "gemini-3.1-flash-lite": "Gemini 3.1 Flash-Lite · Lower cost",
+  "gemini-2.5-flash": "Gemini 2.5 Flash · Legacy",
+  "gemini-2.5-pro": "Gemini 2.5 Pro · Legacy",
 };
 
 type ConfigFormProps = {
@@ -303,7 +309,10 @@ export function ConfigForm({ initialConfig }: ConfigFormProps) {
 
             {isGeminiModelOpen ? (
               <div className="config-model-menu" role="listbox" aria-label="Gemini model">
-                {GEMINI_MODEL_OPTIONS.map((option) => {
+                {[
+                  ...GEMINI_MODEL_OPTIONS,
+                  ...LEGACY_GEMINI_MODEL_OPTIONS.filter((model) => model === initialConfig?.geminiModel),
+                ].map((option) => {
                   const isSelected = option === geminiModel;
 
                   return (
