@@ -63,6 +63,7 @@ export function SignupForm() {
             className="field-input field-input-with-icon"
             placeholder="you@company.com"
             autoComplete="email"
+            suppressHydrationWarning
           />
         </div>
       </div>
@@ -81,6 +82,7 @@ export function SignupForm() {
             className="field-input field-input-with-icon"
             placeholder="Create a strong password"
             autoComplete="new-password"
+            suppressHydrationWarning
           />
         </div>
       </div>
@@ -99,13 +101,14 @@ export function SignupForm() {
             className="field-input field-input-with-icon"
             placeholder="Repeat your password"
             autoComplete="new-password"
+            suppressHydrationWarning
           />
         </div>
       </div>
 
       {error ? <div className="error-banner">{error}</div> : null}
 
-      <button type="submit" disabled={isPending} className="submit-button">
+      <button type="submit" disabled={isPending} className="submit-button" suppressHydrationWarning>
         {isPending ? "Creating account..." : "Create account"}
       </button>
     </form>

@@ -54,6 +54,7 @@ export function LoginForm() {
             className="field-input field-input-with-icon"
             placeholder="you@company.com"
             autoComplete="email"
+            suppressHydrationWarning
           />
         </div>
       </div>
@@ -72,13 +73,14 @@ export function LoginForm() {
             className="field-input field-input-with-icon"
             placeholder="••••••••••••"
             autoComplete="current-password"
+            suppressHydrationWarning
           />
         </div>
       </div>
 
       {error ? <div className="error-banner">{error}</div> : null}
 
-      <button type="submit" disabled={isPending} className="submit-button">
+      <button type="submit" disabled={isPending} className="submit-button" suppressHydrationWarning>
         {isPending ? "Signing in..." : "Sign in"}
       </button>
     </form>

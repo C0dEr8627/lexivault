@@ -1504,6 +1504,34 @@ a {
   overflow: hidden;
 }
 
+/* Keep the panel header visible while long document lists scroll independently. */
+.documents-table-body {
+  /* Reserve enough room to show roughly three document rows before scrolling. */
+  height: min(60vh, 560px);
+  min-height: 450px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.documents-table-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.documents-table-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.documents-table-body::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(156, 183, 255, 0.28);
+}
+
+.documents-table-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 183, 255, 0.45);
+}
+
 .documents-panel-header {
   display: flex;
   justify-content: space-between;

@@ -28,7 +28,9 @@ export async function POST(request: Request) {
           ? 400
           : result.code === "OCR_NOT_SUPPORTED"
             ? 400
-            : 500;
+            : result.code === "PROCESSING_ERROR"
+              ? 502
+              : 500;
 
     return errorResponse(result.code, result.message, status);
   }
